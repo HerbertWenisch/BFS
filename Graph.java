@@ -2,7 +2,7 @@
  * @author (Herbert Wenisch)
  * @version (Breitensuche)
  * symmetrischer und gewichteter Graph
- * Aufgabe 2b: bfs fügt zusätzlich die Kanten des Spannbaums ein
+ * Aufgabe 2c: Gibt zusätzlich den Pfad von D nach A aus; Zeile: 84
  */
 
 import org.graphstream.graph.*;
@@ -78,6 +78,12 @@ public class Graph{
             edgeTo[i] = -1;
     }
     
+    // gibt den Pfad vom Startknoten s zum Zielknoten v zurück: v ---> s
+    public String path(String idV){
+       StringBuilder pathReverse = new StringBuilder();
+       // dein Code!
+        return pathReverse.reverse().toString();
+    }
   
    // verzögertes Einfügen des Knoten v in die Warteliste,
     // damit das menschliche Auge bei der Visualisierung mitkommt
