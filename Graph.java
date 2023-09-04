@@ -2,7 +2,7 @@
  * @author (Herbert Wenisch)
  * @version (Breitensuche)
  * symmetrischer und gewichteter Graph
- * Aufgabe 2a: Lösung
+ * Aufgabe 2b: bfs fügt zusätzlich die Kanten des Spannbaums ein
  */
 
 import org.graphstream.graph.*;
@@ -69,7 +69,16 @@ public class Graph{
     
     private ArrayList<Integer> queue = new ArrayList<>();  // Warteliste
     private boolean[] marked; // markierte Knoten
+    private int[] edgeTo;  // alle Kanten des Spannbaums; -1: kein Vorgänger
     
+    // keine Kanten am Anfang:
+    private void initEdgeTo(){
+        edgeTo = new int[V];
+        for(int i = 0; i < V; i++)
+            edgeTo[i] = -1;
+    }
+    
+  
    // verzögertes Einfügen des Knoten v in die Warteliste,
     // damit das menschliche Auge bei der Visualisierung mitkommt
     private void queue_addSlowly(int v){
@@ -82,6 +91,7 @@ public class Graph{
         // Vorbereitungen:
         marked = new boolean[V];
         queue.clear();
+        initEdgeTo();
         
         // Startbedingung:     
         marked[s] = true;
@@ -175,8 +185,8 @@ public class Graph{
                       int weight = adj[v][w];
                       if(weight > 1) edge_.setAttribute("ui.label", weight + "");
                     }
-                  // else if (edgeTo[v] == w || edgeTo[v] == w) 
-                  //   edge_.setAttribute("ui.color", 1);
+                  else if (edgeTo[v] == w || edgeTo[v] == w) 
+                    edge_.setAttribute("ui.color", 1);
           }
        }
     }
