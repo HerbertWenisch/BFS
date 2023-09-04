@@ -2,7 +2,7 @@
  * @author (Herbert Wenisch)
  * @version (Breitensuche)
  * symmetrischer und gewichteter Graph
- * Aufgabe 2a: implementiere bfs  Zeile 91
+ * Aufgabe 2a: Lösung
  */
 
 import org.graphstream.graph.*;
@@ -88,7 +88,14 @@ public class Graph{
         queue_addSlowly(s);
         
         // Schleife:
-        // Dein Code!
+        while(!queue.isEmpty()){
+            int v = queue.remove(0); // v: aktuelle Knoten
+            for(int w = 0; w < V; w++)   
+               if(adj[v][w] > 0 && !marked[w]){
+                   marked[w] = true;
+                   queue_addSlowly(w);   
+               }     
+        }
         
     }
     
