@@ -21,7 +21,7 @@ public class BeispielgrafTest {
     @Test
     public void test_bfs(){
         graph.bfs(0);
-        System.out.println("Pfad von D nach A:");
+        System.out.println("Pfad von A nach D:");
         System.out.println(graph.path("D"));
     }
     

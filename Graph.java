@@ -81,7 +81,11 @@ public class Graph{
     // gibt den Pfad vom Startknoten s zum Zielknoten v zurück: v ---> s
     public String path(String idV){
        StringBuilder pathReverse = new StringBuilder();
-       // dein Code!
+       int v = indexOf(idV);
+        while(v != -1){
+            pathReverse.append("  " + ids[v]);
+            v = edgeTo[v];
+        }
         return pathReverse.reverse().toString();
     }
   
