@@ -103,6 +103,7 @@ public class Graph{
             for(int w = 0; w < V; w++)   
                if(adj[v][w] > 0 && !marked[w]){
                    marked[w] = true;
+                   edgeTo[w] = v;
                    queue_addSlowly(w);   
                }     
         }
